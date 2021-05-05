@@ -1,17 +1,17 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { useState } from "react"
+import { useCallback, useState } from "react"
+import Drawer from "./Drawer"
 import { GithubIcon, HamburguerIcon } from "./Icons"
 import MenuButton from "./MenuButton"
 
-const Header = () => {
-    const [isOpen, setIsOpen] = useState(false)
+const Header = ({ isOpen, toggleOpen }) => {
     return <header className="w-full bg-white flex justify-between items-center px-8 h-24">
         <MenuButton
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 1 }}
             isOpen={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleOpen}
             strokeWidth="3.2"
             transition={{ ease: "easeOut", duration: 0.2 }}
             width="45"
