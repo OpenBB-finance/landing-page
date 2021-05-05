@@ -1,13 +1,22 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { useState } from "react"
 import { GithubIcon, HamburguerIcon } from "./Icons"
+import MenuButton from "./MenuButton"
 
 const Header = () => {
+    const [isOpen, setIsOpen] = useState(false)
     return <header className="w-full bg-white flex justify-between items-center px-8 h-24">
-        <motion.button whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 1 }} className="focus:outline-none">
-            <HamburguerIcon className="w-12 h-12" />
-        </motion.button>
+        <MenuButton
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 1 }}
+            isOpen={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
+            strokeWidth="3.2"
+            transition={{ ease: "easeOut", duration: 0.2 }}
+            width="45"
+            height="16.88"
+        />
         <motion.svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 3292.03 1135.01"
@@ -29,7 +38,7 @@ const Header = () => {
         </motion.svg>
         <motion.a whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 1 }} target="_blank" rel="noopener" href="https://github.com/DidierRLopes/GamestonkTerminal">
-                <GithubIcon className="w-10" />
+            <GithubIcon className="w-10" />
         </motion.a>
     </header>
 }

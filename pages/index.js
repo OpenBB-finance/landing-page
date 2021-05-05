@@ -15,14 +15,19 @@ export default function Home() {
       <Header />
       <main className="flex flex-col items-center justify-center">
         <section className="relative w-full h-screen">
-          <Image className="h-96 z-0" src="/hero.png" layout="fill" objectFit="cover" objectPosition="center" />
-          <div className="absolute z-10 p-20">
-            <motion.h1 initial={{x: -200}} animate={{x: 0}} className="font-semibold text-4xl tracking-wide w-96">{title}</motion.h1>
+          <Image 
+          className="h-96 z-0" 
+          src="/hero.png" 
+          layout="fill" 
+          objectFit="cover" 
+          objectPosition="right 75%" />
+          <div className="absolute z-10 p-10 md:p-20">
+            <motion.h1 initial={{x: -200}} animate={{x: 0}} className="font-semibold text-xl md:text-4xl tracking-wide md:w-96">{title}</motion.h1>
             <h4 className="italic text-xl mt-4">- VICE</h4>
             <p style={{maxWidth: 600}} className="mt-4">Gamestonk Terminal provides a modern Python-based integrated environment for investment research, that allows the average-joe retail trader to leverage state-of-the-art Data Science and Machine Learning technologies.</p>
             <p className="mt-4 tracking-tight italic font-semibold">#weliketheterminal</p>
 
-            <div className="mt-16 flex gap-x-8">
+            <div className="mt-8 md:mt-16 flex flex-col gap-y-6 md:flex-row md:gap-x-8">
               <motion.button 
               whileHover={{scale: 1.05}}
               whileTap={{scale: 1}}
