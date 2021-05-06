@@ -180,7 +180,7 @@ export default function Home() {
             )}
           </div>
           <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-8 my-8">
-            <Link passHref href="https://github.com/DidierRLopes/GamestonkTerminal/tree/main/gamestonk_terminal">
+            <Link passHref href="https://github.com/DidierRLopes/GamestonkTerminal#install">
               <motion.a
               target="_blank" rel="noopener"  
                 whileHover={{ scale: 1.05 }}
@@ -190,7 +190,7 @@ export default function Home() {
                 Installation Guide
               </motion.a>
             </Link>
-            <Link passHref href="https://github.com/DidierRLopes/GamestonkTerminal/tree/main/gamestonk_terminal">
+            <Link passHref href="https://github.com/DidierRLopes/GamestonkTerminal#contributing">
               <motion.a
               target="_blank" rel="noopener"  
                 whileHover={{ scale: 1.05 }}
