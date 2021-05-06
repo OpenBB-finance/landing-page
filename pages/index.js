@@ -7,9 +7,7 @@ import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer';
 import ReactPlayer from 'react-player/lazy'
-function getRandomNumber(min, max) {
-  return Math.random() * (max - min) + min;
-}
+
 const title = `Gamestonk Terminal is a
 DIY, Meme Stock Version of
 Bloomberg Terminal`
@@ -80,7 +78,7 @@ export default function Home() {
     <>
       <Header isOpen={isOpen} toggleOpen={toggleOpen} />
       <main className="flex flex-col items-center justify-center">
-        <section className="relative w-full h-screen">
+        <section className="relative w-full h-screen bg-primary">
           <Image
             className="z-0"
             src="/hero.png"
