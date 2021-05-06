@@ -117,19 +117,20 @@ export default function Home() {
             <div className="flex mt-6 gap-x-2">
               <DiscordIcon className="w-6" />
               <p className="font-semibold text-sm tracking-wide">Smooth brain? <a
-              target="_blank" rel="noopener"  
-              className="underline" 
-              href="https://discord.gg/FRTFgFX6mu">Join our discord!</a></p>
+                target="_blank" rel="noopener"
+                className="underline"
+                href="https://discord.gg/FRTFgFX6mu">Join our discord!</a></p>
             </div>
           </div>
         </section>
         <section style={{ height: "100vh" }} className="bg-black w-full flex flex-col md:flex-row justify-center items-center gap-y-8 md:gap-y-0 gap-x-36">
-         <div
+          <div
             className="w-full md:w-1/3"
             ref={ref}
           >
             <ReactPlayer
-              style={{ maxWidth: "100vw", marginLeft: "auto", marginRight: "auto" }}
+              width='100%'
+              height='100%'
               playing={inView}
               muted={true}
               url="https://anima-uploads.s3.amazonaws.com/projects/60864c68647832aeba3d1520/files/gst-usage.mp4" />
@@ -182,7 +183,7 @@ export default function Home() {
           <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-8 my-8">
             <Link passHref href="https://github.com/DidierRLopes/GamestonkTerminal#install">
               <motion.a
-              target="_blank" rel="noopener"  
+                target="_blank" rel="noopener"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 1 }}
                 className="focus:outline-none bg-primary text-white w-48 h-16 font-semibold text-lg rounded-full hover:shadow-lg flex items-center justify-center"
@@ -192,7 +193,7 @@ export default function Home() {
             </Link>
             <Link passHref href="https://github.com/DidierRLopes/GamestonkTerminal#contributing">
               <motion.a
-              target="_blank" rel="noopener"  
+                target="_blank" rel="noopener"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 1 }}
                 className="focus:outline-none bg-white text-primary w-48 h-16 font-semibold text-lg rounded-full hover:shadow-lg flex items-center justify-center"

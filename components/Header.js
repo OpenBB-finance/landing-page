@@ -1,7 +1,15 @@
 import { motion } from "framer-motion"
 import { GithubIcon, MainLogoIcon } from "./Icons"
 import MenuButton from "./MenuButton"
-
+function scrollFunction(ref) {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    ref.current.style.top = "0"
+    ref.current.style.display = "block"
+  } else {
+    ref.current.style.top = "-50px"
+    ref.current.style.display = "none"
+  }
+}
 const Header = ({ isOpen, toggleOpen }) => {
     return <header className="fixed z-50 w-full bg-white flex justify-between items-center px-8 h-24">
         <MenuButton
