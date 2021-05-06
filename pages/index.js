@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useInView } from 'react-intersection-observer';
 import ReactPlayer from 'react-player/lazy'
-import TagCloud from 'react-tag-cloud';
 function getRandomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
