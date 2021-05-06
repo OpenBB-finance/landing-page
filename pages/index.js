@@ -1,22 +1,19 @@
 import Drawer from '@/components/Drawer'
 import Header from '@/components/Header'
 import { motion } from 'framer-motion'
-import Head from 'next/head'
 import Image from "next/image"
 import { useCallback, useState } from 'react'
+
 const title = `Gamestonk Terminal is a
 DIY, Meme Stock Version of
 Bloomberg Terminal`
+
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
   const toggleOpen = useCallback(() => setIsOpen((isOpen) => !isOpen), []);
 
   return (
     <>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Header isOpen={isOpen} toggleOpen={toggleOpen} />
       <main className="flex flex-col items-center justify-center">
         <section className="relative w-full h-screen">
