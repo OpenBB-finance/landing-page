@@ -142,7 +142,7 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
 
       {/* The backdrop overlay that appears behind the drawer */}
       <motion.div
-        className="z-10 fixed inset-0 bg-black"
+        className="z-50 fixed inset-0 bg-black"
         style={
           {
             "--tw-bg-opacity": 0.4
