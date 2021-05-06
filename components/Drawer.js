@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { CloseIcon } from "./Icons";
-
+import { BookIcon, BugIcon, CloseIcon, CodeIcon, CogIcon, MinimalLogoIcon, PencilIcon, PlanIcon } from "./Icons";
+import Link from "next/link"
 // The variants for the drawer itself
 const variants = {
   open: { opacity: 1, x: 0 },
@@ -14,8 +14,46 @@ const overlayVariants = {
   closed: { opacity: 0, pointerEvents: "none" }
 };
 
+const LIST = [
+  {
+    label: "Installation Guide",
+    href: "https://github.com/DidierRLopes/GamestonkTerminal#install",
+    passHref: true,
+    icon: <BookIcon className="w-6" />
+  }, {
+    label: "Troubleshooting Guide",
+    href: "https://github.com/DidierRLopes/GamestonkTerminal/blob/main/TROUBLESHOOT.md",
+    passHref: true,
+    icon: <CogIcon className="w-6" />
+  },
+  {
+    label: "Roadmap",
+    href: "https://github.com/DidierRLopes/GamestonkTerminal/blob/main/ROADMAP.md",
+    passHref: true,
+    icon: <PlanIcon className="w-6" />
+  },
+  {
+    label: "Become a contributor",
+    href: "https://github.com/DidierRLopes/GamestonkTerminal#contributing",
+    passHref: true,
+    icon: <CodeIcon className="w-6" />
+  },
+  {
+    label: "Request a feature",
+    href: "https://github.com/DidierRLopes/GamestonkTerminal/issues/new?assignees=&labels=new+feature&template=feature_request.md&title=%5BFR%5D",
+    passHref: true,
+    icon: <PencilIcon className="w-6" />
+  },
+  {
+    label: "Report a bug",
+    href: "https://github.com/DidierRLopes/GamestonkTerminal/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBug%5D",
+    passHref: true,
+    icon: <BugIcon className="w-6" />
+  },
+]
 
-const Drawer =({ toggleOpen, width = 350, isOpen, children }) => {
+
+const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
 
   // Stores whether or not hammer was loaded
   const [hammerLoaded, setHammerLoaded] = useState(false);
@@ -92,7 +130,7 @@ const Drawer =({ toggleOpen, width = 350, isOpen, children }) => {
       };
     }
 
-    return () => {};
+    return () => { };
   }, [toggleOpen, hammerLoaded]);
 
   return (
@@ -120,7 +158,7 @@ const Drawer =({ toggleOpen, width = 350, isOpen, children }) => {
       {/* The element that animates in and out */}
       <motion.div
         ref={drawerRef}
-        className="fixed top-0 bottom-0 z-30"
+        className="fixed top-0 bottom-0 z-30 bg-primary"
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={variants}
@@ -129,19 +167,26 @@ const Drawer =({ toggleOpen, width = 350, isOpen, children }) => {
         {/* Adds a "card-like" look to the drawer */}
         <div
           style={{ width }}
-          className="bg-primary p-4 h-screen z-50 select-text"
+          className="h-screen z-50 select-text"
         >
           {/* Aligns the close button to the end */}
-          <div className="flex items-center justify-end">
-            <button
-              onClick={toggleOpen}
-              className="hamburger p-1 transform transition-transform hover:scale-125 active:scale-95 focus:outline-none"
-            >
-              <CloseIcon className="h-8 w-8" />
-            </button>
+          <button
+            onClick={toggleOpen}
+            className="absolute top-0 right-0 mr-6 mt-6 hamburger p-1 transform transition-transform hover:scale-125 active:scale-95 focus:outline-none"
+          >
+            <CloseIcon className="h-8 w-8" />
+          </button>
+          <MinimalLogoIcon className="w-24 mx-auto mt-20 mb-10" />
+          <div className="flex flex-col">
+            {LIST.map((link, idx) =>
+              <Link passHref={link.passHref} href={link.href} key={idx}><a className="font-semibold pl-8 py-2 w-full text-lg hover:bg-primaryLighter flex gap-x-4">
+                {link.icon}
+                <span>
+                  {link.label}
+                </span>
+              </a></Link>
+            )}
           </div>
-          {/* Drawer content */}
-          {children}
         </div>
       </motion.div>
     </>

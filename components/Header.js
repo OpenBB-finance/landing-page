@@ -6,7 +6,7 @@ import { GithubIcon, HamburguerIcon, MainLogoIcon } from "./Icons"
 import MenuButton from "./MenuButton"
 
 const Header = ({ isOpen, toggleOpen }) => {
-    return <header className="w-full bg-white flex justify-between items-center px-8 h-24">
+    return <header className="fixed z-50 w-full bg-white flex justify-between items-center px-8 h-24">
         <MenuButton
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 1 }}
