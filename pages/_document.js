@@ -6,19 +6,30 @@ class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <link
-                        rel="preload"
-                        href="/fonts/inter-var-latin.woff2"
-                        as="font"
-                        type="font/woff2"
-                        crossOrigin="anonymous"
+                        rel="preconnect"
+                        href="https://fonts.gstatic.com"
+                        crossOrigin="true"
                     />
+                    <link
+                        rel="preload"
+                        as="style"
+                        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+                    />
+                    <link
+                        rel="stylesheet"
+                        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+                        media="print"
+                        onLoad="this.media='all'"
+                    />
+                    <noscript>
+                        <link
+                            rel="stylesheet"
+                            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+                        />
+                    </noscript>
                     <link href="/favicons/favicon.ico" rel="shortcut icon" />
                     <link href="/favicons/site.webmanifest" rel="manifest" />
-                    <link
-                        rel="preconnect"
-                        href="https://cdn.usefathom.com"
-                        crossOrigin=""
-                    />
+
                     <link
                         href="/favicons/apple-touch-icon.png"
                         rel="apple-touch-icon"
@@ -47,11 +58,6 @@ class MyDocument extends Document {
                     <meta
                         content="/favicons/browserconfig.xml"
                         name="msapplication-config"
-                    />
-                    <meta content="14d2e73487fa6c71" name="yandex-verification" />
-                    <meta
-                        content="eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw"
-                        name="google-site-verification"
                     />
                 </Head>
                 <body className="bg-black">
