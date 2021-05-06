@@ -54,7 +54,7 @@ class MyDocument extends Document {
                         name="google-site-verification"
                     />
                 </Head>
-                <body>
+                <body className="bg-black">
                     <Main />
                     <NextScript />
                 </body>

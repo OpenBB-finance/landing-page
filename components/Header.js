@@ -1,8 +1,5 @@
 import { motion } from "framer-motion"
-import Image from "next/image"
-import { useCallback, useState } from "react"
-import Drawer from "./Drawer"
-import { GithubIcon, HamburguerIcon, MainLogoIcon } from "./Icons"
+import { GithubIcon, MainLogoIcon } from "./Icons"
 import MenuButton from "./MenuButton"
 
 const Header = ({ isOpen, toggleOpen }) => {

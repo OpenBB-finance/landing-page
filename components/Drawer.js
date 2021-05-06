@@ -157,8 +157,9 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
 
       {/* The element that animates in and out */}
       <motion.div
+        style={{ zIndex: 999 }}
         ref={drawerRef}
-        className="fixed top-0 bottom-0 z-30 bg-primary"
+        className="fixed top-0 bottom-0 bg-primary"
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={variants}
@@ -179,12 +180,16 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
           <MinimalLogoIcon className="w-24 mx-auto mt-20 mb-10" />
           <div className="flex flex-col">
             {LIST.map((link, idx) =>
-              <Link passHref={link.passHref} href={link.href} key={idx}><a className="font-semibold pl-8 py-2 w-full text-lg hover:bg-primaryLighter flex gap-x-4">
-                {link.icon}
-                <span>
-                  {link.label}
-                </span>
-              </a></Link>
+              <Link passHref={link.passHref} href={link.href} key={idx}>
+                <a
+                  target="_blank" rel="noopener"
+                  className="font-semibold pl-8 py-2 w-full text-lg hover:bg-primaryLighter flex gap-x-4">
+                  {link.icon}
+                  <span>
+                    {link.label}
+                  </span>
+                </a>
+              </Link>
             )}
           </div>
         </div>
