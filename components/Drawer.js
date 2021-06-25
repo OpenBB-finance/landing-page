@@ -1,60 +1,68 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { BookIcon, BugIcon, CloseIcon, CodeIcon, CogIcon, MinimalLogoIcon, PencilIcon, PlanIcon } from "./Icons";
-import Link from "next/link"
+import {
+  BookIcon,
+  BugIcon,
+  CloseIcon,
+  CodeIcon,
+  CogIcon,
+  MinimalLogoIcon,
+  PencilIcon,
+  PlanIcon,
+} from "./Icons";
+import Link from "next/link";
 // The variants for the drawer itself
 const variants = {
   open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: "-100%" }
+  closed: { opacity: 0, x: "-100%" },
 };
 
 // The variants for the drawer backdrop overlay
 const overlayVariants = {
   open: { opacity: 1, pointerEvents: "auto" },
-  closed: { opacity: 0, pointerEvents: "none" }
+  closed: { opacity: 0, pointerEvents: "none" },
 };
 
 const LIST = [
   {
     label: "Installation Guide",
-    href: "https://github.com/DidierRLopes/GamestonkTerminal#install",
+    href: "https://github.com/GamestonkTerminal/GamestonkTerminal#install",
     passHref: true,
-    icon: <BookIcon className="w-6" />
-  }, {
+    icon: <BookIcon className="w-6" />,
+  },
+  {
     label: "Troubleshooting Guide",
-    href: "https://github.com/DidierRLopes/GamestonkTerminal/blob/main/TROUBLESHOOT.md",
+    href: "https://github.com/GamestonkTerminal/GamestonkTerminal/blob/main/TROUBLESHOOT.md",
     passHref: true,
-    icon: <CogIcon className="w-6" />
+    icon: <CogIcon className="w-6" />,
   },
   {
     label: "Roadmap",
-    href: "https://github.com/DidierRLopes/GamestonkTerminal/blob/main/ROADMAP.md",
+    href: "https://github.com/GamestonkTerminal/GamestonkTerminal/blob/main/ROADMAP.md",
     passHref: true,
-    icon: <PlanIcon className="w-6" />
+    icon: <PlanIcon className="w-6" />,
   },
   {
     label: "Become a contributor",
-    href: "https://github.com/DidierRLopes/GamestonkTerminal#contributing",
+    href: "https://github.com/GamestonkTerminal/GamestonkTerminal#contributing",
     passHref: true,
-    icon: <CodeIcon className="w-6" />
+    icon: <CodeIcon className="w-6" />,
   },
   {
     label: "Request a feature",
-    href: "https://github.com/DidierRLopes/GamestonkTerminal/issues/new?assignees=&labels=new+feature&template=feature_request.md&title=%5BFR%5D",
+    href: "https://github.com/GamestonkTerminal/GamestonkTerminal/issues/new?assignees=&labels=new+feature&template=feature_request.md&title=%5BFR%5D",
     passHref: true,
-    icon: <PencilIcon className="w-6" />
+    icon: <PencilIcon className="w-6" />,
   },
   {
     label: "Report a bug",
-    href: "https://github.com/DidierRLopes/GamestonkTerminal/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBug%5D",
+    href: "https://github.com/GamestonkTerminal/GamestonkTerminal/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBug%5D",
     passHref: true,
-    icon: <BugIcon className="w-6" />
+    icon: <BugIcon className="w-6" />,
   },
-]
-
+];
 
 const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
-
   // Stores whether or not hammer was loaded
   const [hammerLoaded, setHammerLoaded] = useState(false);
 
@@ -98,7 +106,7 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
           if (Hammer) {
             // Creates an instance of Hammer
             hammertimeDrawer.current = new Hammer(drawerRef.current, {
-              touchAction: "pan-y"
+              touchAction: "pan-y",
             });
           }
         }
@@ -113,7 +121,7 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
           if (Hammer) {
             // Creates an instance of Hammer
             hammertimePanner.current = new Hammer(pannerRef.current, {
-              touchAction: "pan-y"
+              touchAction: "pan-y",
             });
           }
         }
@@ -130,7 +138,7 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
       };
     }
 
-    return () => { };
+    return () => {};
   }, [toggleOpen, hammerLoaded]);
 
   return (
@@ -143,11 +151,9 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
       {/* The backdrop overlay that appears behind the drawer */}
       <motion.div
         className="z-50 fixed inset-0 bg-black"
-        style={
-          {
-            "--tw-bg-opacity": 0.4
-          }
-        }
+        style={{
+          "--tw-bg-opacity": 0.4,
+        }}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={overlayVariants}
@@ -166,10 +172,7 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
         transition={{ type: "spring", stiffness: 350, damping: 40 }}
       >
         {/* Adds a "card-like" look to the drawer */}
-        <div
-          style={{ width }}
-          className="h-screen z-50 select-text"
-        >
+        <div style={{ width }} className="h-screen z-50 select-text">
           {/* Aligns the close button to the end */}
           <button
             onClick={toggleOpen}
@@ -179,18 +182,18 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
           </button>
           <MinimalLogoIcon className="w-24 mx-auto mt-20 mb-10" />
           <div className="flex flex-col">
-            {LIST.map((link, idx) =>
+            {LIST.map((link, idx) => (
               <Link passHref={link.passHref} href={link.href} key={idx}>
                 <a
-                  target="_blank" rel="noopener"
-                  className="font-semibold pl-8 py-2 w-full text-lg hover:bg-primaryLighter flex gap-x-4">
+                  target="_blank"
+                  rel="noopener"
+                  className="font-semibold pl-8 py-2 w-full text-lg hover:bg-primaryLighter flex gap-x-4"
+                >
                   {link.icon}
-                  <span>
-                    {link.label}
-                  </span>
+                  <span>{link.label}</span>
                 </a>
               </Link>
-            )}
+            ))}
           </div>
         </div>
       </motion.div>
@@ -198,4 +201,4 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
   );
 };
 
-export default Drawer
+export default Drawer;
