@@ -28,37 +28,37 @@ const LIST = [
     label: "Installation Guide",
     href: "https://github.com/GamestonkTerminal/GamestonkTerminal#install",
     passHref: true,
-    icon: <BookIcon className="w-6" />,
+    icon: <BookIcon className="w-6" style={{height: 28}}/>,
   },
   {
     label: "Troubleshooting Guide",
     href: "https://github.com/GamestonkTerminal/GamestonkTerminal/blob/main/TROUBLESHOOT.md",
     passHref: true,
-    icon: <CogIcon className="w-6" />,
+    icon: <CogIcon className="w-6" style={{height: 28}}/>,
   },
   {
     label: "Roadmap",
     href: "https://github.com/GamestonkTerminal/GamestonkTerminal/blob/main/ROADMAP.md",
     passHref: true,
-    icon: <PlanIcon className="w-6" />,
+    icon: <PlanIcon className="w-6" style={{height: 28"}}/>,
   },
   {
     label: "Become a contributor",
     href: "https://github.com/GamestonkTerminal/GamestonkTerminal#contributing",
     passHref: true,
-    icon: <CodeIcon className="w-6" />,
+    icon: <CodeIcon className="w-6" style={{height: 28}}/>,
   },
   {
     label: "Request a feature",
     href: "https://github.com/GamestonkTerminal/GamestonkTerminal/issues/new?assignees=&labels=new+feature&template=feature_request.md&title=%5BFR%5D",
     passHref: true,
-    icon: <PencilIcon className="w-6" />,
+    icon: <PencilIcon className="w-6" style={{height: 28}}/>,
   },
   {
     label: "Report a bug",
     href: "https://github.com/GamestonkTerminal/GamestonkTerminal/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBug%5D",
     passHref: true,
-    icon: <BugIcon className="w-6" />,
+    icon: <BugIcon className="w-6" style={{height: 28}}/>,
   },
 ];
 
