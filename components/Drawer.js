@@ -40,7 +40,7 @@ const LIST = [
     label: "Roadmap",
     href: "https://github.com/GamestonkTerminal/GamestonkTerminal/blob/main/ROADMAP.md",
     passHref: true,
-    icon: <PlanIcon className="w-6" style={{height: 28"}}/>,
+    icon: <PlanIcon className="w-6" style={{height: 28}}/>,
   },
   {
     label: "Become a contributor",
