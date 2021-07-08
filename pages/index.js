@@ -1,5 +1,8 @@
 import Drawer from "@/components/Drawer";
+import Faq from "@/components/FAQ";
+import Statistics from "@/components/Statistics";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer"
 import { DiscordIcon } from "@/components/Icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -63,9 +66,34 @@ const words = [
     top: 90,
     left: 40,
   },
-];
+]
 
-export default function Home() {
+export async function getStaticProps() {
+  const rawResGithub = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal")
+  const {stargazers_count, forks_count} = await rawResGithub.json()
+  const rawResGithubContrib = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal/contributors?per_page=200")
+  const contributors = await rawResGithubContrib.json()
+  const rawResDiscord = await fetch("https://discord.com/api/guilds/831165782750789672/widget.json")
+  const {presence_count} = await rawResDiscord.json()
+  const data = {
+    github: {
+      stars: stargazers_count,
+      forks: forks_count,
+      contributors: contributors.length,
+    },
+    discord: {
+      activeMembers: presence_count
+    }
+  }
+  return {
+    props: {
+      data
+    }
+  }
+}
+
+
+export default function Home({data}) {
   const { ref, inView } = useInView({
     threshold: 0,
   });
@@ -77,7 +105,7 @@ export default function Home() {
     <>
       <Header isOpen={isOpen} toggleOpen={toggleOpen} />
       <main className="flex flex-col items-center justify-center">
-        <section className="relative w-full h-screen bg-primary">
+        <section className="relative w-full bg-primary" style={{minHeight: "100vh"}}>
           <Image
             className="z-0"
             src="/hero.png"
@@ -149,10 +177,11 @@ export default function Home() {
                 </a>
               </p>
             </div>
+            <Statistics data={data} />
           </div>
         </section>
         <section
-          style={{ height: "100vh" }}
+          style={{ minHeight: "80vh" }}
           className="bg-black w-full flex flex-col md:flex-row justify-center items-center gap-y-8 md:gap-y-0 gap-x-36"
         >
           <div className="w-full md:w-1/3" ref={ref}>
@@ -185,9 +214,13 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section style={{ minHeight: "60vh" }}
+          className="bg-white w-full flex flex-col justify-center items-center gap-y-8 md:gap-y-0 gap-x-36">
+          <Faq />
+        </section>
         <section
           className="bg-black text-white w-full flex justify-center flex-col items-center mt-20 md:mt-0"
-          style={{ height: "80vh" }}
+          style={{ minHeight: "80vh" }}
         >
           <div className="mx-auto flex flex-col">
             <h4 className="text-3xl font-semibold text-center tracking-wide">
@@ -203,7 +236,7 @@ export default function Home() {
               fontWeight: "bold",
               padding: 5,
               width: "100%",
-              height: "50%",
+              minHeight: "50%",
             }}
           >
             {words.map((w, idx) => (
@@ -257,7 +290,7 @@ export default function Home() {
         </section>
         <section
           className="bg-black text-white w-full flex justify-center flex-col items-center relative"
-          style={{ height: "60vh" }}
+          style={{ minHeight: "60vh" }}
         >
           <Image
             className="z-0 img-grayscale opacity-50"
@@ -276,9 +309,8 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <Drawer isOpen={isOpen} toggleOpen={toggleOpen}>
-        Holla
-      </Drawer>
+      <Drawer isOpen={isOpen} toggleOpen={toggleOpen} />
+      <Footer />
     </>
   );
 }
