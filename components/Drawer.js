@@ -75,7 +75,7 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
   const hammertimeDrawer = useRef();
   const hammertimePanner = useRef();
 
-  // An instance of hammer class
+  // An instance of hammer className
   // Unfortunately we don't have access to the HammerStatic type
   const hammerInstance = useRef();
 
@@ -98,7 +98,7 @@ const Drawer = ({ toggleOpen, width = 350, isOpen, children }) => {
   useEffect(() => {
     // If hammer got loaded
     if (hammerLoaded) {
-      // Gets the class constructor
+      // Gets the className constructor
       const Hammer = hammerInstance.current;
       // If there's a drawer element
       if (drawerRef?.current) {

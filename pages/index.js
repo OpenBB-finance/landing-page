@@ -177,8 +177,10 @@ export default function Home({data}) {
                 </a>
               </p>
             </div>
-            <Statistics data={data} />
           </div>
+        </section>
+        <section className="w-full flex items-center">
+            <Statistics data={data} />
         </section>
         <section
           style={{ minHeight: "80vh" }}
