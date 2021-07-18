@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 const MenuButton = ({
     isOpen = false,
+    toggle,
     width = 24,
     height = 24,
     strokeWidth = 1,
@@ -55,12 +56,15 @@ const MenuButton = ({
 
     return (
         <motion.svg
-            className="cursor-pointer"
+            role="button"
+            aria-label={isOpen ? "Close Menu" : "Open Menu"}
+            title={isOpen ? "Close Menu" : "Open Menu"}
             viewBox={`0 0 ${unitWidth} ${unitHeight}`}
             overflow="visible"
             preserveAspectRatio="none"
             width={width}
             height={height}
+            onClick={() => toggle(!isOpen)}
             {...props}
         >
             <motion.line
