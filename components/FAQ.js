@@ -6,7 +6,7 @@ const Item = ({ question, answer, idx }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<li className="border-2 px-6 py-4 rounded-lg">
+		<li className="shadow border select-none cursor-pointer bg-white rounded p-4">
 			<motion.button
 				initial={false}
 				//animate={{ backgroundColor: isOpen ? "#FF0088" : "#0055FF" }}
@@ -17,7 +17,7 @@ const Item = ({ question, answer, idx }) => {
 				onClick={() => setIsOpen(!isOpen)}
 			>
 				<h6 className="text-base font-medium text-left">{`${idx}. ${question}`}</h6>
-				<button className="group-hover:bg-gray-200 h-7 w-7 rounded-lg text-primaryDarker bg-gray-100 p-2">
+				<button className="group-hover:bg-gray-200 h-7 w-7 rounded text-primaryDarker bg-gray-100 p-2">
 					<svg
 						viewBox="0 0 24 24"
 						style={{ borderRadius: "10%", boxSizing: "content-box" }}

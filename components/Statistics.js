@@ -9,9 +9,8 @@ const Item = ({ number, title, url, description }) => {
 		target="_blank"
 		rel="noopener"
 		href={url}
-		whileHover={{ scale: 1.05 }}
-		whileTap={{ scale: 1 }} style={{ width: "15rem" }} className="cursor-pointer text-center bg-white rounded-xl shadow">
-		<div className="flex items-center justify-center w-8 h-8 mx-auto mb-2 rounded-full sm:w-12 sm:h-12">
+		className="w-48 md:w-60 cursor-pointer text-center bg-white rounded shadow">
+		<div className="inline-block items-center justify-center w-8 h-8 mx-auto mb-2 rounded-full sm:w-12 sm:h-12">
 			<svg
 				className="w-8 h-8 text-primary sm:w-10 sm:h-10"
 				stroke="currentColor"
@@ -36,8 +35,8 @@ const Item = ({ number, title, url, description }) => {
 
 const Statistics = ({ data }) => {
 	return (
-		<div className="px-4 py-8 mx-auto md:ml-0 max-w-xl">
-			<div className="grid grid-cols-4 gap-10 lg:grid-cols-2">
+		<div className="py-8 md:ml-0 flex md:flex-col overflow-x-scroll hide-scroll-bar" style={{ maxWidth: "80vw" }}>
+			<div className="flex flex-nowrap gap-x-8">
 				<Item title={"GitHub Stars"} number={kFormatter(Number(data.github.stars))} url={data.github.url} />
 				<Item title={"GitHub Contributors"} number={data.github.contributors} url={data.github.url} />
 				<Item title={"GitHub Forks"} number={data.github.forks} url={data.github.url} />

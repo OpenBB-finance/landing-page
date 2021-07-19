@@ -2,7 +2,7 @@ import Faq from "@/components/FAQ"
 import CommonLayout from "components/layouts/CommonLayout"
 import { getFaqsContent } from "lib/api"
 export async function getStaticProps() {
-    const data = getFaqsContent()
+    const data = getFaqsContent("faqs.json")
     return {
         props: {
             data

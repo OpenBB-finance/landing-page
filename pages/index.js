@@ -122,7 +122,7 @@ export default function Home({ data }) {
           objectFit="cover"
           objectPosition="right 75%"
         />
-        <div className="absolute z-10 my-32 px-10 md:px-20">
+        <div className="absolute z-10 my-32 px-10 md:px-20 mx-auto w-full">
           <motion.h1
             initial={{ x: -200 }}
             animate={{ x: 0 }}
@@ -137,14 +137,14 @@ export default function Home({ data }) {
             </span>
             alternative to Bloomberg Terminal
           </motion.h1>
-          <p className="mt-4 md:mt-10 md:max-w-[50vw]">
+          <p className="mt-4 md:max-w-[50vw] md:my-10">
             Gamestonk Terminal provides a modern Python-based integrated
             environment for investment research, that allows the average-joe
             retail trader to leverage state-of-the-art Data Science and
             Machine Learning technologies.
           </p>
           <Statistics data={data} />
-          <div className="flex flex-col justify-between md:flex-row gap-x-12 items-end mt-8 sm:mt-24 md:mt-32 w-full">
+          <div className="flex flex-col md:flex-row gap-8 mt-4 sm:mt-24 md:mt-32 md:w-full md:items-end md:justify-between">
             <Testimonials />
             <Socials />
           </div>
