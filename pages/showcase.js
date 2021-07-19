@@ -1,7 +1,8 @@
 import CommonLayout from "components/layouts/CommonLayout"
+import { getPageContent } from "lib/api"
 
 export async function getStaticProps() {
-    const data = getFaqsContent("showcase.json")
+    const data = getPageContent("showcase.json")
     return {
         props: {
             data
