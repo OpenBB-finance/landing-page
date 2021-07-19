@@ -1,4 +1,4 @@
-import { DESCRIPTION, TITLE } from '@/utils/constants'
+import { DESCRIPTION, TITLE } from "lib/constants"
 import Head from 'next/head'
 import 'tailwindcss/tailwind.css'
 import '@/styles/index.css'

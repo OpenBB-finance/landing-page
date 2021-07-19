@@ -70,9 +70,19 @@ const words = [
 ]
 
 export async function getStaticProps() {
-  const rawResGithub = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal")
+  const rawResGithub = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal", {
+    method: "GET",
+    headers: {
+      'Authorization': `token ${process.env.GITHUB_AUTH_TOKEN}`,
+    }
+  })
   const { stargazers_count, forks_count } = await rawResGithub.json()
-  const rawResGithubContrib = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal/contributors?per_page=200")
+  const rawResGithubContrib = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal/contributors?per_page=200", {
+    method: "GET",
+    headers: {
+      'Authorization': `token ${process.env.GITHUB_AUTH_TOKEN}`,
+    }
+  })
   const contributors = await rawResGithubContrib.json()
   const rawResDiscord = await fetch("https://discord.com/api/guilds/831165782750789672/widget.json")
   const { presence_count } = await rawResDiscord.json()

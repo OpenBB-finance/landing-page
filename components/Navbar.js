@@ -1,4 +1,6 @@
+import classNames from "classnames";
 import { motion } from "framer-motion";
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useState } from "react";
 import { GithubIcon, MainLogoIcon } from "./Icons";
@@ -27,10 +29,24 @@ const LINKS = [
     }
 ]
 
+const CustomLink = ({ href, label, asPath }) => <Link href={href}>
+    <a
+        aria-label={label}
+        title={label}
+        className={classNames("font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-primary hover:underline", {
+            "text-primary": asPath.includes(href)
+        }
+        )}
+    >
+        {label}
+    </a>
+</Link>
+
 const Navbar = () => {
+    const { asPath } = useRouter()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
-        <div className="fixed z-50 bg-white px-4 py-5 w-full md:px-24 lg:px-8">
+        <div className="fixed z-50 bg-white px-4 py-5 w-full md:px-24 lg:px-8 border-b">
             <div className="relative flex items-center justify-between">
                 <Link
                     href="/"
@@ -44,15 +60,7 @@ const Navbar = () => {
                 </Link>
                 <ul className="items-center hidden space-x-8 lg:flex">
                     {LINKS.map(link => <li key={link.href}>
-                        <Link href={link.href}>
-                            <a
-                                aria-label={link.label}
-                                title={link.label}
-                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-primary"
-                            >
-                                {link.label}
-                            </a>
-                        </Link>
+                        <CustomLink href={link.href} label={link.label} asPath={asPath} />
                     </li>)}
                     <motion.a
                         whileHover={{ scale: 1.05 }}
@@ -82,15 +90,7 @@ const Navbar = () => {
                             <nav className="p-5 bg-white border rounded shadow-sm overflow-hidden">
                                 <ul className="space-y-4">
                                     {LINKS.map(link => <li key={link.href}>
-                                        <Link href={link.href}>
-                                            <a
-                                                aria-label={link.label}
-                                                title={link.label}
-                                                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-primary"
-                                            >
-                                                {link.label}
-                                            </a>
-                                        </Link>
+                                        <CustomLink href={link.href} label={link.label} asPath={asPath} />
                                     </li>)}
                                     <motion.a
                                         whileHover={{ scale: 1.05 }}
@@ -110,7 +110,7 @@ const Navbar = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

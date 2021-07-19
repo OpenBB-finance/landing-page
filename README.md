@@ -7,7 +7,12 @@ This project is the official landing page of Gamestonk Terminal.
 
 1. Install node.js (e.g., using [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm))
 2. Clone the project and enter the folder
-3. Install dependencies and start the project
+3. Set up .env vars
+```
+GITHUB_AUTH_TOKEN=""
+REMOTE_CHANGELOG_SOURCE=""
+```
+4. Install dependencies and start the project
 ```bash
 npm i #install dependencies
 npm run dev #run the project
