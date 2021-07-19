@@ -4,12 +4,13 @@ function kFormatter(num) {
 	return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : Math.sign(num) * Math.abs(num)
 }
 
-const Item = ({ number, title, description }) => {
+const Item = ({ number, title, url, description }) => {
 	return <motion.a
 		target="_blank"
 		rel="noopener"
+		href={url}
 		whileHover={{ scale: 1.05 }}
-		whileTap={{ scale: 1 }} style={{width: "15rem"}} className="cursor-pointer text-center bg-white rounded-xl shadow">
+		whileTap={{ scale: 1 }} style={{ width: "15rem" }} className="cursor-pointer text-center bg-white rounded-xl shadow">
 		<div className="flex items-center justify-center w-8 h-8 mx-auto mb-2 rounded-full sm:w-12 sm:h-12">
 			<svg
 				className="w-8 h-8 text-primary sm:w-10 sm:h-10"
@@ -35,15 +36,12 @@ const Item = ({ number, title, description }) => {
 
 const Statistics = ({ data }) => {
 	return (
-		<div style={{ maxWidth: "80%" }} className="py-16 mx-auto lg:py-20">
-			<p className="text-center px-3 mb-8 text-xl font-semibold tracking-wider uppercase">
-				Statistics
-			</p>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-				<Item title={"GitHub Stars"} number={kFormatter(Number(data.github.stars))} />
-				<Item title={"GitHub Contributors"} number={data.github.contributors} />
-				<Item title={"GitHub Forks"} number={data.github.forks} />
-				<Item title={"Discord online members"} number={data.discord.activeMembers} />
+		<div className="px-4 py-8 mx-auto md:ml-0 max-w-xl">
+			<div className="grid grid-cols-4 gap-10 lg:grid-cols-2">
+				<Item title={"GitHub Stars"} number={kFormatter(Number(data.github.stars))} url={data.github.url} />
+				<Item title={"GitHub Contributors"} number={data.github.contributors} url={data.github.url} />
+				<Item title={"GitHub Forks"} number={data.github.forks} url={data.github.url} />
+				<Item title={"Discord online members"} number={data.discord.activeMembers} url={data.discord.url} />
 			</div>
 		</div>
 	);

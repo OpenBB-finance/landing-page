@@ -1,40 +1,46 @@
+import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-const Item = ({ title, children }) => {
+const Item = ({ question, answer, idx }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<div className="">
+		<li className="border-2 px-6 py-4 rounded-lg">
 			<motion.button
 				initial={false}
 				//animate={{ backgroundColor: isOpen ? "#FF0088" : "#0055FF" }}
 				type="button"
 				aria-label="Open item"
 				title="Open item"
-				className="flex items-center justify-between w-full p-4 focus:outline-none"
+				className="group flex items-center justify-between w-full p-4 focus:outline-none"
 				onClick={() => setIsOpen(!isOpen)}
 			>
-				<p className="text-lg font-medium">{title}</p>
-				<svg
-					viewBox="0 0 24 24"
-					className={`w-3 text-gray-600 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''
-						}`}
-				>
-					<polyline
-						fill="none"
-						stroke="currentColor"
-						strokeWidth="2"
-						strokeLinecap="round"
-						strokeMiterlimit="10"
-						points="2,7 12,17 22,7"
-						strokeLinejoin="round"
-					/>
-				</svg>
+				<h6 className="text-base font-medium text-left">{`${idx}. ${question}`}</h6>
+				<button className="group-hover:bg-gray-200 h-7 w-7 rounded-lg text-primaryDarker bg-gray-100 p-2">
+					<svg
+						viewBox="0 0 24 24"
+						style={{ borderRadius: "10%", boxSizing: "content-box" }}
+						className={classNames(
+							"transform transition-transform duration-200 w-full", {
+							'rotate-180': isOpen
+						})}
+					>
+						<polyline
+							fill="none"
+							stroke="currentColor"
+							strokeWidth="3"
+							strokeLinecap="round"
+							strokeMiterlimit="10"
+							points="2,7 12,17 22,7"
+							strokeLinejoin="round"
+						/>
+					</svg>
+				</button>
 			</motion.button>
 			<AnimatePresence initial={false}>
 				{isOpen && (
-					<motion.div className="p-4 pt-0" key="content"
+					<motion.div className="p-4 cursor-default" key="content"
 						initial="collapsed"
 						animate="open"
 						exit="collapsed"
@@ -44,49 +50,19 @@ const Item = ({ title, children }) => {
 						}}
 						transition={{ duration: 0.5, }}
 					>
-						<p className="text-gray-700">{children}</p>
+						<p className="text-gray-700 break-all">{answer}</p>
 					</motion.div>
 				)}
 			</AnimatePresence>
-		</div>
+		</li>
 	);
 };
 
-const Faq = () => {
+const Faq = ({ questions }) => {
 	return (
-		<div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 ">
-			<div className="max-w-xl sm:mx-auto lg:max-w-2xl">
-				<div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-					<div>
-						<p className="inline-block px-3 py-px mb-4 text-xl font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-							Frequently Asked Questions
-						</p>
-					</div>
-					<p className="text-base text-gray-700 md:text-lg ">
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-						accusantium doloremque rem aperiam, eaque ipsa quae.
-					</p>
-				</div>
-				<div className="space-y-4">
-					<Item title="The quick, brown fox jumps over a lazy dog?">
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-						accusantium doloremque rem aperiam, eaque ipsa quae.
-					</Item>
-					<Item title="The first mate and his Skipper too will do?">
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-						accusantium doloremque rem aperiam, eaque ipsa quae.
-					</Item>
-					<Item title="Is the Space Pope reptilian!?">
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-						accusantium doloremque rem aperiam, eaque ipsa quae.
-					</Item>
-					<Item title="How much money you got on you?">
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-						accusantium doloremque rem aperiam, eaque ipsa quae.
-					</Item>
-				</div>
-			</div>
-		</div>
+		<ul className="mt-8 mx-auto max-w-screen-sm lg:max-w-screen-lg grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+			{questions.map((f, idx) => <Item key={idx} idx={idx} answer={f.answer} question={f.question} />)}
+		</ul>
 	);
 };
 

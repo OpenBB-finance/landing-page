@@ -11,10 +11,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import ReactPlayer from "react-player/lazy";
 import CommonLayout from "components/layouts/CommonLayout";
-
-const title = `Gamestonk Terminal is a
-DIY, Meme Stock Version of
-Bloomberg Terminal`;
+import Testimonials from "@/components/Testimonials";
+import Socials from "@/components/Socials";
 
 const words = [
   {
@@ -70,7 +68,7 @@ const words = [
 ]
 
 export async function getStaticProps() {
-  const rawResGithub = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal", {
+  /*const rawResGithub = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal", {
     method: "GET",
     headers: {
       'Authorization': `token ${process.env.GITHUB_AUTH_TOKEN}`,
@@ -85,15 +83,17 @@ export async function getStaticProps() {
   })
   const contributors = await rawResGithubContrib.json()
   const rawResDiscord = await fetch("https://discord.com/api/guilds/831165782750789672/widget.json")
-  const { presence_count } = await rawResDiscord.json()
+  const { presence_count } = await rawResDiscord.json()*/
   const data = {
     github: {
-      stars: stargazers_count,
-      forks: forks_count,
-      contributors: contributors.length,
+      url: "https://google.com",
+      stars: 100,//stargazers_count,
+      forks: 100,//forks_count,
+      contributors: 100//contributors.length,
     },
     discord: {
-      activeMembers: presence_count
+      url: "https://google.com",
+      activeMembers: 100//presence_count
     }
   }
   return {
@@ -114,7 +114,7 @@ export default function Home({ data }) {
 
   return (
     <CommonLayout>
-      <section className="relative w-full bg-primary" style={{ minHeight: "100vh" }}>
+      <section className="relative w-full bg-primary min-h-screen">
         <Image
           className="z-0"
           src="/hero.png"
@@ -122,201 +122,32 @@ export default function Home({ data }) {
           objectFit="cover"
           objectPosition="right 75%"
         />
-        <div className="absolute z-10 mt-20 p-10 md:p-20">
+        <div className="absolute z-10 my-32 px-10 md:px-20">
           <motion.h1
             initial={{ x: -200 }}
             animate={{ x: 0 }}
-            className="font-semibold text-xl md:text-4xl tracking-wide md:w-96"
+            className="font-semibold text-xl md:text-4xl tracking-wide"
           >
-            {title}
+            A
+            <span className="relative px-2">
+              <div className="absolute inset-x-0 bottom-0 h-3 transform -skew-x-12 bg-white" />
+              <span className="relative inline-block text-black">
+                FOSS
+              </span>
+            </span>
+            alternative to Bloomberg Terminal
           </motion.h1>
-          <h4 className="italic text-xl mt-4">- VICE</h4>
-          <p style={{ maxWidth: 600 }} className="mt-4">
+          <p className="mt-4 md:mt-10 md:max-w-[50vw]">
             Gamestonk Terminal provides a modern Python-based integrated
             environment for investment research, that allows the average-joe
             retail trader to leverage state-of-the-art Data Science and
             Machine Learning technologies.
           </p>
-          <p className="mt-4 tracking-tight italic font-semibold">
-            #weliketheterminal
-          </p>
-
-          <div className="mt-8 md:mt-16 flex flex-col gap-y-6 sm:flex-row sm:gap-x-8">
-            <Link
-              passHref
-              href="https://github.com/GamestonkTerminal/GamestonkTerminal"
-            >
-              <motion.a
-                target="_blank"
-                rel="noopener"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 1 }}
-                className="focus:outline-none bg-black text-primary w-48 h-16 font-semibold text-lg rounded-full hover:shadow-lg flex items-center justify-center"
-              >
-                Check Code
-              </motion.a>
-            </Link>
-            <Link
-              passHref
-              href="https://github.com/GamestonkTerminal/GamestonkTerminal/tree/main/gamestonk_terminal"
-            >
-              <motion.a
-                target="_blank"
-                rel="noopener"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 1 }}
-                className="focus:outline-none bg-white text-primary w-48 h-16 font-semibold text-lg rounded-full hover:shadow-lg flex items-center justify-center"
-              >
-                Explore Features
-              </motion.a>
-            </Link>
+          <Statistics data={data} />
+          <div className="flex flex-col justify-between md:flex-row gap-x-12 items-end mt-8 sm:mt-24 md:mt-32 w-full">
+            <Testimonials />
+            <Socials />
           </div>
-
-          <div className="flex mt-6 gap-x-2">
-            <DiscordIcon className="w-6" />
-            <p className="font-semibold text-sm tracking-wide">
-              Smooth brain?{" "}
-              <a
-                target="_blank"
-                rel="noopener"
-                className="underline"
-                href="https://discord.gg/FRTFgFX6mu"
-              >
-                Join our discord!
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="w-full flex items-center">
-        <Statistics data={data} />
-      </section>
-      <section
-        style={{ minHeight: "80vh" }}
-        className="bg-black w-full flex flex-col md:flex-row justify-center items-center gap-y-8 md:gap-y-0 gap-x-36"
-      >
-        <div className="w-full md:w-1/3" ref={ref}>
-          <ReactPlayer
-            width="100%"
-            height="100%"
-            playing={inView}
-            muted={true}
-            url="https://anima-uploads.s3.amazonaws.com/projects/60864c68647832aeba3d1520/files/gst-usage.mp4"
-          />
-        </div>
-        <div className="text-white flex flex-col gap-y-8 w-full md:w-1/3 p-8">
-          <p className="w-46 text-lg sm:text-2xl">
-            As a modern Python-based environment, GamestonkTerminal opens
-            access to numerous Python data libraries in:
-          </p>
-          <div>
-            <div>
-              <p className="text-primary">Data Science</p>
-              <p>Pandas, Numpy, Scipy, Jupyter</p>
-            </div>
-            <div>
-              <p className="text-primary">Machine Learning</p>
-              <p>Pytorch, Tensorflow, Sklearn, Flair</p>
-            </div>
-            <div>
-              <p className="text-primary">Data acquisition</p>
-              <p>Beautiful Soup & many third-party APIs</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section style={{ minHeight: "60vh" }}
-        className="bg-white w-full flex flex-col justify-center items-center gap-y-8 md:gap-y-0 gap-x-36">
-        <Faq />
-      </section>
-      <section
-        className="bg-black text-white w-full flex justify-center flex-col items-center mt-20 md:mt-0"
-        style={{ minHeight: "80vh" }}
-      >
-        <div className="mx-auto flex flex-col">
-          <h4 className="text-3xl font-semibold text-center tracking-wide">
-            AN INFORMED APE, IS A STRONG APE
-          </h4>
-          <p className="text-lg text-center mx-auto">
-            Together, We Are Even Stronger.
-          </p>
-        </div>
-        <div
-          className="radial grid grid-cols-1 overflow-y-auto gap-y-4 md:grid-cols-3 mt-8 mx-auto"
-          style={{
-            fontWeight: "bold",
-            padding: 5,
-            width: "100%",
-            minHeight: "50%",
-          }}
-        >
-          {words.map((w, idx) => (
-            <motion.p
-              style={
-                {
-                  /*position: "absolute",
-                  top: `${w.top}%`,
-                  left: `${w.left}%`,*/
-                }
-              }
-              key={idx}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 1 }}
-              className="mx-auto w-64 h-14 flex items-center justify-center px-2 py-1 font-semibold uppercase border-4 rounded-full border-primary text-primary text-center"
-            >
-              {w.label}
-            </motion.p>
-          ))}
-        </div>
-        <div className="flex flex-col gap-y-6 sm:flex-row sm:gap-x-8 my-8">
-          <Link
-            passHref
-            href="https://github.com/GamestonkTerminal/GamestonkTerminal#install"
-          >
-            <motion.a
-              target="_blank"
-              rel="noopener"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 1 }}
-              className="focus:outline-none bg-primary text-white w-48 h-16 font-semibold text-lg rounded-full hover:shadow-lg flex items-center justify-center"
-            >
-              Installation Guide
-            </motion.a>
-          </Link>
-          <Link
-            passHref
-            href="https://github.com/GamestonkTerminal/GamestonkTerminal#contributing"
-          >
-            <motion.a
-              target="_blank"
-              rel="noopener"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 1 }}
-              className="focus:outline-none bg-white text-primary w-48 h-16 font-semibold text-lg rounded-full hover:shadow-lg flex items-center justify-center"
-            >
-              Become a contributor
-            </motion.a>
-          </Link>
-        </div>
-      </section>
-      <section
-        className="bg-black text-white w-full flex justify-center flex-col items-center relative"
-        style={{ minHeight: "60vh" }}
-      >
-        <Image
-          className="z-0 img-grayscale opacity-50"
-          src="/monkey_space.png"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="50% 50%"
-        />
-        <div className="absolute z-10 mt-20 p-10 md:p-20">
-          <h2
-            style={{ letterSpacing: "0.2em" }}
-            className="text-5xl text-center"
-          >
-            THIS IS OUR WAY.
-          </h2>
         </div>
       </section>
     </CommonLayout>
