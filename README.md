@@ -3,6 +3,66 @@
 
 This project is the official landing page of Gamestonk Terminal.
 
+---
+
+## Change Content
+
+### FAQ
+Edit file `faqs.json` inside folder `_contents`
+```
+{
+    "title": "Frequently Asked Questions",
+    "description": "Blablabla",
+    "questions": [
+        {
+            "question": "e quick, brown fox jumps over a lazy dog?",
+            "answer": "lorem ipsummmmmmmmmmmmmmmmmmmmmmmmmm"
+        },
+        {
+            "question": "e quick, brown fox jumps over a lazy dog?",
+            "answer": "lorem ipsummmmmmmmmmmmmmmmmmmmmmmmmm"
+        },
+        {
+            "question": "e quick, brown fox jumps over a lazy dog?",
+            "answer": "lorem ipsummmmmmmmmmmmmmmmmmmmmmmmmm"
+        },
+        {
+            "question": "e quick, brown fox jumps over a lazy dog?",
+            "answer": "lorem ipsummmmmmmmmmmmmmmmmmmmmmmmmm"
+        }
+    ]
+}
+```
+
+
+### Changelogs
+All the markdowns added to `changelogs` folder inside [GamestonkTerminal repository](https://github.com/GamestonkTerminal/GamestonkTerminal) is rendered on this website
+
+### Showcase
+Edit file `showcase.json` inside folder `_contents`
+```
+{
+    "showcases": [
+        {
+            "date": "2021-07-05",
+            "title": "How to do DD w/ GST",
+            "url": "https://google.com"
+        }
+    ],
+    "mentions": [
+        {
+            "author": "VICE",
+            "title": "Gamestonk Terminal Lorem ipsum",
+            "date": "2021-07-05"
+        }
+    ]
+}
+```
+
+
+
+---
+
 ## Run locally
 
 1. Install node.js (e.g., using [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm))
