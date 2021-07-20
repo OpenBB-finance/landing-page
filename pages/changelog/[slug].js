@@ -91,7 +91,6 @@ export const components = {
   ),
   del: (props) => <del className="line-through" {...props} />,
 
-  // TODO:
   pre: ({ children, ...props }) => {
     return (
       <pre className="" {...props}>

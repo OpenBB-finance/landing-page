@@ -1,74 +1,13 @@
-import Drawer from "@/components/Drawer";
-import Faq from "@/components/FAQ";
 import Statistics from "@/components/Statistics";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer"
-import { DiscordIcon } from "@/components/Icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import ReactPlayer from "react-player/lazy";
 import CommonLayout from "components/layouts/CommonLayout";
 import Testimonials from "@/components/Testimonials";
 import Socials from "@/components/Socials";
 
-const words = [
-  {
-    label: "TECHNICAL ANALYSIS",
-    top: 30,
-    left: 40,
-  },
-  {
-    label: "HIGH SHORT INTEREST",
-    top: 20,
-    left: 10,
-  },
-  {
-    label: "BEHAVIORAL ANALYSIS",
-    top: 60,
-    left: 60,
-  },
-  {
-    label: "MACHINE LEARNING",
-    top: 60,
-    left: 30,
-  },
-  {
-    label: "GENERATE DUE DILIGENCE REPORTS",
-    top: 40,
-    left: 40,
-  },
-  {
-    label: "TRACK REDDIT STONKS",
-    top: 50,
-    left: 20,
-  },
-  {
-    label: "DARKPOOLS",
-    top: 90,
-    left: 60,
-  },
-  {
-    label: "ECONOMIC DATA",
-    top: 20,
-    left: 50,
-  },
-  {
-    label: "PREDICTION MODELS",
-    top: 70,
-    left: 20,
-  },
-  {
-    label: "ADVANCED RESEARCH DATA",
-    top: 90,
-    left: 40,
-  },
-]
 
 export async function getStaticProps() {
-  /*const rawResGithub = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal", {
+  const rawResGithub = await fetch("https://api.github.com/repos/GamestonkTerminal/GamestonkTerminal", {
     method: "GET",
     headers: {
       'Authorization': `token ${process.env.GITHUB_AUTH_TOKEN}`,
@@ -83,17 +22,17 @@ export async function getStaticProps() {
   })
   const contributors = await rawResGithubContrib.json()
   const rawResDiscord = await fetch("https://discord.com/api/guilds/831165782750789672/widget.json")
-  const { presence_count } = await rawResDiscord.json()*/
+  const { presence_count } = await rawResDiscord.json()
   const data = {
     github: {
       url: "https://google.com",
-      stars: 100,//stargazers_count,
-      forks: 100,//forks_count,
-      contributors: 100//contributors.length,
+      stars: stargazers_count,
+      forks: forks_count,
+      contributors: contributors.length,
     },
     discord: {
       url: "https://google.com",
-      activeMembers: 100//presence_count
+      activeMembers: presence_count
     }
   }
   return {
@@ -105,13 +44,6 @@ export async function getStaticProps() {
 
 
 export default function Home({ data }) {
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
-
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleOpen = useCallback(() => setIsOpen((isOpen) => !isOpen), []);
-
   return (
     <CommonLayout>
       <section className="relative w-full bg-primary min-h-screen">
