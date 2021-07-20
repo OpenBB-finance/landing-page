@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useState } from "react";
@@ -85,29 +85,35 @@ const Navbar = () => {
                         toggle={setIsMenuOpen}
                         className="cursor-pointer"
                     />
-                    {isMenuOpen && (
-                        <div className="absolute top-0 right-0 mt-12">
-                            <nav className="p-5 bg-white border rounded shadow-sm overflow-hidden">
-                                <ul className="space-y-4">
-                                    {LINKS.map(link => <li key={link.href}>
-                                        <CustomLink href={link.href} label={link.label} asPath={asPath} />
-                                    </li>)}
-                                    <motion.a
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 1 }}
-                                        target="_blank"
-                                        rel="noopener"
-                                        href="https://github.com/GamestonkTerminal/GamestonkTerminal"
-                                        aria-label="Source Code"
-                                        title="Source Code"
-                                        className="float-right"
-                                    >
-                                        <GithubIcon className="w-10" />
-                                    </motion.a>
-                                </ul>
-                            </nav>
-                        </div>
-                    )}
+                    <AnimatePresence>
+                        {isMenuOpen && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="absolute top-0 right-0 mt-12 z-50">
+                                <nav className="p-5 bg-white border rounded shadow-sm overflow-hidden">
+                                    <ul className="space-y-4">
+                                        {LINKS.map(link => <li key={link.href}>
+                                            <CustomLink href={link.href} label={link.label} asPath={asPath} />
+                                        </li>)}
+                                        <motion.a
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 1 }}
+                                            target="_blank"
+                                            rel="noopener"
+                                            href="https://github.com/GamestonkTerminal/GamestonkTerminal"
+                                            aria-label="Source Code"
+                                            title="Source Code"
+                                            className="float-right"
+                                        >
+                                            <GithubIcon className="w-10" />
+                                        </motion.a>
+                                    </ul>
+                                </nav>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </div >

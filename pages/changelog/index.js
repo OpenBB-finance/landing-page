@@ -1,7 +1,5 @@
 import { getLogs } from "lib/api"
 import Link from "next/link"
-import { format } from 'fecha';
-import ChangelogLayout from "@/components/layouts/ChangelogLayout";
 import CommonLayout from "@/components/layouts/CommonLayout";
 
 export const getStaticProps = async () => {
@@ -22,8 +20,8 @@ const Changelog = ({ allLogs }) => {
         {allLogs.map(p => <li className="">
           <Link href={`/changelog/${p.name}`}>
             <a className="group shadow border select-none cursor-pointer bg-white rounded flex flex-1 items-center p-4">
-              <h2 className="flex-1 pl-1 md:mr-16 capitalize font-semibold">
-                {p.name}
+              <h2 className="flex-1 pl-1 md:mr-16 capitalize font-semibold tracking-wide">
+                {`Week ${p.week} - ${p.year}`}
               </h2>
               <button className="text-right flex justify-end items-center text-primary group-hover:text-primaryDarker font-semibold group-hover:underline rounded px-2 py-1">
                 <span>Read more</span>
