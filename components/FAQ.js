@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
@@ -21,7 +21,7 @@ const Item = ({ question, answer, idx }) => {
 					<svg
 						viewBox="0 0 24 24"
 						style={{ borderRadius: "10%", boxSizing: "content-box" }}
-						className={classNames(
+						className={clsx(
 							"transform transition-transform duration-200 w-full", {
 							'rotate-180': isOpen
 						})}

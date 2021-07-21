@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "classnames": "^2.3.1",
+    "@headlessui/react": "^1.3.0",
+    "@heroicons/react": "^1.0.2",
+    "clsx": "^1.1.1",
     "fecha": "^4.2.1",
     "framer-motion": "^4.1.11",
     "hammerjs": "^2.0.8",

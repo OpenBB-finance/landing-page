@@ -1,10 +1,11 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOnClickOutside } from "lib/customHooks";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { GithubIcon, MainLogoIcon } from "./Icons";
+import MenuMobile from "./MenuMobile";
 
 const LINKS = [
     {
@@ -29,13 +30,13 @@ const LINKS = [
     }
 ]
 
-const CustomLink = ({ href, label, asPath }) => <Link href={href}>
+const CustomLink = ({ href, label, active }) => <Link href={href}>
     <a
         aria-label={label}
         title={label}
-        className={classNames("font-medium tracking-wide transition-colors duration-200 hover:text-primary hover:underline", {
-            "text-primary": asPath.includes(href),
-            "text-gray-700": !asPath.includes(href)
+        className={clsx("font-medium tracking-wide transition-colors duration-200 hover:text-primary hover:underline", {
+            "text-primary": active,
+            "text-gray-700": !active
         }
         )}
     >
@@ -64,7 +65,7 @@ const Navbar = () => {
                 </Link>
                 <ul className="items-center hidden space-x-8 lg:flex">
                     {LINKS.map(link => <li key={link.href}>
-                        <CustomLink href={link.href} label={link.label} asPath={asPath} />
+                        <CustomLink href={link.href} label={link.label} active={asPath.includes(link.href)} />
                     </li>)}
                     <motion.a
                         whileHover={{ scale: 1.05 }}
@@ -78,11 +79,12 @@ const Navbar = () => {
                         <GithubIcon className="w-10" />
                     </motion.a>
                 </ul>
-                <div className="lg:hidden mr-4" ref={ref}>
+                <MenuMobile links={LINKS} CustomLink={CustomLink} asPath={asPath} />
+                {/*<div className="lg:hidden mr-4" ref={ref}>
                     <button onClick={setIsMenuOpen} type="button" className="inline-flex items-center justify-between px-2 py-1 font-medium text-gray-700 transition-all duration-500 rounded-md focus:ring ring-primary sm:focus:shadow-outline">
                         <span className="flex-shrink-0">Menu</span>
                         <svg fill="currentColor" viewBox="0 0 20 20" className="flex-shrink-0 w-5 h-5 ml-1">
-                            <path className={classNames("transition duration-300 ease-in-out origin-center transform", { "rotate-180": isMenuOpen })} fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                            <path className={clsx("transition duration-300 ease-in-out origin-center transform", { "rotate-180": isMenuOpen })} fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path>
                         </svg>
                     </button>
 
@@ -116,7 +118,7 @@ const Navbar = () => {
                             </motion.div>
                         )}
                     </AnimatePresence>
-                </div>
+                                        </div>*/}
             </div>
         </div >
     );
