@@ -10,7 +10,6 @@
   "dependencies": {
     "@headlessui/react": "^1.3.0",
     "@heroicons/react": "^1.0.2",
-    "esbuild": "^0.12.15",
     "fecha": "^4.2.1",
     "framer-motion": "^4.1.11",
     "hammerjs": "^2.0.8",
