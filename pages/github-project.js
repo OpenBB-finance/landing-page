@@ -1,17 +1,6 @@
 import CommonLayout from "components/layouts/CommonLayout"
 
-export async function getStaticProps() {
-    /*const URL = "https://raw.githubusercontent.com/GamestonkTerminal/GamestonkTerminal/main/README.md"
-    const source = await getData(URL)
-    const content = marked(source.toString())*/
-    return {
-        props: {
-
-        }
-    }
-}
-
-const GithubProjectPage = ({ }) => {
+const GithubProjectPage = () => {
     return <CommonLayout>
         <div className="pt-32 max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
             <div className="pb-8">
