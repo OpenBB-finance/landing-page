@@ -1,6 +1,5 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { GithubIcon } from './Icons'
