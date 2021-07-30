@@ -7,7 +7,7 @@ import { GithubIcon } from './Icons'
 export default function MenuMobile({ links, CustomLink, asPath }) {
     return (
         <div className="lg:hidden mr-4">
-            <Menu as="div" className="relative inline-block text-left">
+            <Menu as="div" className="relative inline-block text-left z-50">
                 {({ open }) => (
                     <>
                         <div>

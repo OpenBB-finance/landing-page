@@ -4,7 +4,7 @@ import Footer from "components/Footer"
 const CommonLayout = ({ children }) => {
     return <>
         <Navbar />
-        <main className="min-h-screen">
+        <main className="">
             {children}
         </main>
         {/*<Footer />*/}

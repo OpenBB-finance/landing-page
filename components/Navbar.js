@@ -51,7 +51,7 @@ const Navbar = () => {
     useOnClickOutside(ref, () => setIsMenuOpen(false));
 
     return (
-        <div className="fixed z-50 bg-white px-4 py-5 w-full md:px-24 lg:px-8 border-b">
+        <div className="z-50 bg-white px-4 py-5 w-full md:px-24 lg:px-8 border-b">
             <div className="relative flex items-center justify-between">
                 <Link
                     href="/"

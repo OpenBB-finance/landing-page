@@ -16,17 +16,15 @@ const TESTIMONIALS = [
     }
 ]
 
-const Item = ({ author, excerpt, link }) => <div style={{ width: "15rem" }} className="h-36 bg-white text-primary rounded">
-    <div className="h-full p-5 border border-l-0 shadow-sm overflow-hidden py-2 rounded">
-        <h6 className="mb-2 font-semibold leading-5">{author}</h6>
-        <p className="text-sm text-gray-900">
-            <span className="text-primary text-xl">“</span>{excerpt}<span className="text-primary text-xl">”</span>
-        </p>
-        <a href={link}
-            target="_blank"
-            rel="noopener"
-            className="font-bold text-sm hover:underline text-right float-right">Read more</a>
-    </div>
+const Item = ({ author, excerpt, link }) => <div className="bg-white text-primary min-w-[15rem] p-2 text-xs md:text-base sm:p-5 shadow-sm overflow-hidden py-2 rounded">
+    <h6 className="mb-2 font-semibold leading-5">{author}</h6>
+    <p className="text-xs text-gray-900">
+        <span className="text-primary text-lg">“</span>{excerpt}<span className="text-primary text-lg">”</span>
+    </p>
+    <a href={link}
+        target="_blank"
+        rel="noopener"
+        className="font-bold text-sm hover:underline text-right float-right">Read more</a>
 </div>
 
 

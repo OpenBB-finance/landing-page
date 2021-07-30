@@ -46,7 +46,7 @@ export async function getStaticProps() {
 export default function Home({ data }) {
   return (
     <CommonLayout>
-      <section className="relative w-full bg-primary min-h-screen">
+      <section className="pt-4 sm:pt-8 relative w-full bg-primary" style={{ minHeight: "88.1vh" }}>
         <Image
           className="z-0"
           src="/hero.png"
@@ -54,11 +54,11 @@ export default function Home({ data }) {
           objectFit="cover"
           objectPosition="right 75%"
         />
-        <div className="absolute z-10 my-32 px-10 md:px-20 mx-auto w-full">
+        <div className="absolute z-10 px-4 sm:px-10 md:px-20 mx-auto w-full">
           <motion.h1
             initial={{ x: -200 }}
             animate={{ x: 0 }}
-            className="font-semibold text-xl md:text-4xl tracking-wide"
+            className="font-semibold text-base sm:text-lg md:text-4xl tracking-wide"
           >
             A
             <span className="relative px-2">
@@ -69,14 +69,14 @@ export default function Home({ data }) {
             </span>
             alternative to Bloomberg Terminal
           </motion.h1>
-          <p className="mt-4 md:max-w-[50vw] md:my-10">
+          <p className="text-sm sm:text-base mt-2 md:mt-12 md:max-w-[100vw] lg:max-w-[70vw] md:my-8">
             Gamestonk Terminal provides a modern Python-based integrated
             environment for investment research, that allows the average-joe
             retail trader to leverage state-of-the-art Data Science and
             Machine Learning technologies.
           </p>
           <Statistics data={data} />
-          <div className="flex flex-col md:flex-row gap-8 mt-4 sm:mt-24 md:mt-32 md:w-full md:items-end md:justify-between">
+          <div className="flex flex-col md:flex-row gap-8 mt-4 sm:mt-8 md:mt-12 md:w-full md:items-end md:justify-between">
             <Testimonials />
             <Socials />
           </div>

@@ -1,3 +1,7 @@
+:root {
+  --primary: #0dc4a5;
+}
+
 .img-grayscale {
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
@@ -10,4 +14,10 @@
 }
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
+}
+
+
+.scrollbox {
+  background: linear-gradient(to right, var(--primary) 0%, rgba(0, 0, 0, 0)), linear-gradient(to right, rgba(0, 0, 0, 0), var(--primary) 0%) 0 100%, linear-gradient(to right, black, rgba(0, 0, 0, 0) 20%), linear-gradient(to left, black, rgba(0, 0, 0, 0) 20%);
+  background-attachment: local, local, scroll, scroll;
 }
