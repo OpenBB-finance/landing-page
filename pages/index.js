@@ -143,7 +143,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener"
                   className="underline"
-                  href="https://discord.gg/FRTFgFX6mu"
+                  href="https://discord.gg/Up2QGbMKHY"
                 >
                   Join our discord!
                 </a>
