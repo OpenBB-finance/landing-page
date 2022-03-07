@@ -218,7 +218,7 @@ export default function Home() {
                 key={idx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 1 }}
-                className="mx-auto w-64 h-14 flex items-center justify-center px-2 py-1 font-semibold uppercase border-4 rounded-full border-primary text-primary text-center"
+                className=" cursor-pointer hover:bg-gray-800 mx-auto w-64 h-14 flex items-center justify-center px-2 py-1 font-semibold uppercase border-4 rounded-full border-primary text-primary text-center"
               >
                 {w.label}
               </motion.p>
